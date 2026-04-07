@@ -1,0 +1,635 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   CUSTOM BASE STYLES
+   ======================================== */
+
+/* Thai Font Configuration */
+@layer base {
+  html {
+    font-family: 'Prompt', 'Noto Sans Thai', 'Sarabun', system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900 bg-gray-50;
+    line-height: 1.6;
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+/* ========================================
+   CUSTOM COMPONENTS
+   ======================================== */
+@layer components {
+  
+  /* Button Base Styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .btn-warning {
+    @apply bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+  }
+  
+  /* Form Input Styles */
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .form-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white;
+  }
+  
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+  
+  .card-header {
+    @apply border-b border-gray-200 pb-4 mb-4;
+  }
+  
+  /* Navigation Styles */
+  .nav-link {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply bg-blue-100 text-blue-700;
+  }
+  
+  .nav-link-inactive {
+    @apply text-gray-600 hover:text-gray-900 hover:bg-gray-50;
+  }
+  
+  /* Table Styles */
+  .table {
+    @apply w-full border-collapse;
+  }
+  
+  .table th {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200 bg-gray-50;
+  }
+  
+  .table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b border-gray-200;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  /* Reset all styles for print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Page Setup */
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+  
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Show only print area */
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  
+  /* Position print area */
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  
+  /* Hide non-print elements */
+  .no-print,
+  button,
+  .btn,
+  nav,
+  .navigation,
+  .sidebar,
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  /* Receipt specific styles */
+  .receipt-container {
+    width: 80mm !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .receipt-header {
+    text-align: center !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .receipt-title {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .receipt-subtitle {
+    font-size: 14px !important;
+    margin-bottom: 3px !important;
+  }
+  
+  .receipt-info {
+    font-size: 10px !important;
+    color: #666 !important;
+    margin-bottom: 2px !important;
+  }
+  
+  .receipt-divider {
+    border-top: 1px solid #000 !important;
+    margin: 10px 0 !important;
+  }
+  
+  .receipt-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .receipt-item-name {
+    flex: 1 !important;
+    font-weight: 500 !important;
+  }
+  
+  .receipt-item-details {
+    font-size: 10px !important;
+    color: #666 !important;
+  }
+  
+  .receipt-item-price {
+    font-weight: bold !important;
+    margin-left: 10px !important;
+  }
+  
+  .receipt-total {
+    border-top: 1px solid #000 !important;
+    padding-top: 8px !important;
+    margin-top: 10px !important;
+  }
+  
+  .receipt-total-line {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .receipt-grand-total {
+    font-weight: bold !important;
+    font-size: 14px !important;
+    border-top: 1px solid #000 !important;
+    padding-top: 5px !important;
+    margin-top: 5px !important;
+  }
+  
+  .receipt-footer {
+    text-align: center !important;
+    margin-top: 15px !important;
+    font-size: 10px !important;
+    color: #666 !important;
+  }
+  
+  /* Tax Invoice specific styles */
+  .tax-invoice {
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    font-size: 12px !important;
+  }
+  
+  .tax-invoice-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .tax-invoice-title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+  
+  .tax-invoice-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 15px 0 !important;
+  }
+  
+  .tax-invoice-table th,
+  .tax-invoice-table td {
+    border: 1px solid #000 !important;
+    padding: 8px !important;
+    text-align: left !important;
+  }
+  
+  .tax-invoice-table th {
+    background-color: #f5f5f5 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+  
+  .tax-invoice-table .text-right {
+    text-align: right !important;
+  }
+  
+  .tax-invoice-table .text-center {
+    text-align: center !important;
+  }
+  
+  /* QR Code styling for print */
+  .qr-code-print {
+    width: 150px !important;
+    height: 150px !important;
+    margin: 10px auto !important;
+    display: block !important;
+  }
+  
+  /* Force black text for important elements */
+  .print-black {
+    color: #000 !important;
+  }
+  
+  /* Ensure logos and images print */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always !important;
+  }
+  
+  .page-break-after {
+    page-break-after: always !important;
+  }
+  
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+  }
+}
+
+/* ========================================
+   RECEIPT THERMAL PRINTER STYLES
+   ======================================== */
+@media print and (max-width: 80mm) {
+  .print-area {
+    width: 80mm !important;
+    font-size: 11px !important;
+    padding: 5mm !important;
+  }
+  
+  .receipt-container {
+    width: 100% !important;
+    font-size: 11px !important;
+  }
+  
+  .receipt-title {
+    font-size: 14px !important;
+  }
+  
+  .receipt-subtitle {
+    font-size: 12px !important;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+@layer utilities {
+  /* Print utilities */
+  .print-only {
+    display: none;
+  }
+  
+  @media print {
+    .print-only {
+      display: block !important;
+    }
+    
+    .print-inline {
+      display: inline !important;
+    }
+    
+    .print-flex {
+      display: flex !important;
+    }
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.5s ease-out;
+  }
+  
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-4 h-4 border-2 border-gray-300 border-t-blue-600 rounded-full;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+  
+  .bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+  
+  .bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+  
+  .bg-gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* เอฟเฟคเพิ่มสินค้าลงตะกร้า */
+@keyframes scaleIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* เอฟเฟคปุ่มชำระเงิน */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 640px) {
+  .mobile-responsive {
+    @apply text-sm px-2 py-1;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+  
+  .table th,
+  .table td {
+    @apply px-3 py-2 text-xs;
+  }
+}
+
+/* ========================================
+   POS EFFECTS AND ANIMATIONS
+   ======================================== */
+/* Product card click animation */
+.product-card-click {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Float up animation for added items */
+.float-up {
+  animation: floatUp 0.6s ease-out forwards;
+}
+
+/* Pulse animation */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Payment button loading */
+.btn-loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Shimmer effect */
+.shimmer-button {
+  background: linear-gradient(
+    90deg,
+    #3b82f6 0%,
+    #60a5fa 20%,
+    #3b82f6 40%,
+    #3b82f6 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Success button animation */
+.btn-success-click {
+  animation: bounceIn 0.5s ease-out;
+}
+
+/* Cart item pop animation */
+.cart-item-add {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+@layer base {
+  /* Focus styles */
+  *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card {
+      @apply border-2 border-gray-900;
+    }
+    
+    .btn {
+      @apply border-2;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

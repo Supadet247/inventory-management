@@ -1,0 +1,113 @@
+# Laravel Framework
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/public/build
+/bootstrap/cache
+/storage/*.key
+/storage/pail
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+
+# Environment Files - NEVER COMMIT
+.env
+.env.local
+.env.backup
+.env.production
+.env.*.local
+.env.*.backup
+
+# IDE & Editor Files
+.vscode/
+.idea/
+.fleet/
+.zed/
+.nova/
+.phpactor.json
+.editorconfig
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build & Cache Files
+.phpunit.cache
+.phpunit.result.cache
+.eslintcache
+tsconfig.json.tsbuildinfo
+
+# Composer & Package Managers
+auth.json
+composer.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pail.log
+
+# Database Files
+*.sqlite
+*.sqlite3
+database/database.sqlite
+
+# OS Files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Homestead
+Homestead.json
+Homestead.yaml
+Homestead.local.yaml
+
+# Vagrant & Docker
+.vagrant/
+.docker/
+.dockerignore
+
+# Uploaded Files (keep structure but ignore content)
+/storage/app/uploads/*
+!/storage/app/uploads/.gitkeep
+public/uploads/*
+!/public/uploads/.gitkeep
+
+# Testing
+/coverage
+.phpunit.xml
+phpunit.xml
+/tests/Feature/temp
+/tests/Unit/temp
+
+# Sensitive Local Configuration
+/config/app.local.php
+/config/database.local.php
+/config/mail.local.php
+
+# Backup & Temporary Files
+*.bak
+*.backup
+.env.*.swp
+.env.*.bak
+
+# Build Output
+/build/
+/dist/
+
+# Miscellaneous
+.cache/
+tmp/
+temp/
+*.tmp
+.git/info/exclude
